@@ -39,7 +39,7 @@ public class UsuarioController {
 
 	@Autowired
 	private SessionUtils sessionUtils;
-	
+
 	@Autowired
 	private LocalStorage storage;
 
@@ -73,7 +73,7 @@ public class UsuarioController {
 	public String abrirLista(Model model) {
 
 		List<Usuario> usuarios = usuarioDao.buscarTodos();
-		
+
 		storage.aplicarCaminhoFotoEmUsuarios(usuarios);
 
 		model.addAttribute("usuarios", usuarios);
