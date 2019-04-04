@@ -36,41 +36,41 @@ public abstract class AbstractJPA<T> implements DAO<T> {
 
 	@Override
 	public List<T> buscarPorCampo(String campo, Object valor) {
-		return getSession().createQuery("FROM " + getEntityName() + " o WHERE o." + campo + " = :valor")
-				.setParameter("valor", valor).list();
+		return getSession().createQuery("FROM " + getEntityName() + " o WHERE o." + campo + " = :valor").setParameter("valor", valor).list();
 	}
 
 	@Override
 	public List<T> buscarPorCampos(Map<String, Object> campos) {
-		if (campos.size() == 0) {
-			throw new IllegalArgumentException("Você deve informar mais de um campo na busca de campos");
+
+		if(campos.size() == 0) {
+			throw new IllegalArgumentException("Você deve informar mais de um campo na busca de camppos");
 		}
-
+		
 		String hql = "FROM " + getEntityName() + " e";
-
-		// Cria o hql com os filtros
+		
+		//Cria o hql com os filtros
 		int ultimoIndice = campos.size() - 1;
 		int i = 0;
 		for (String campo : campos.keySet()) {
-			if (i == 0) {
+			if(i == 0) {
 				hql += " WHERE ";
-			} else {
+			}else {
 				hql += " AND ";
 			}
-
+			
 			hql += "e." + campo + " = :" + campo;
-
+			
 			i++;
 		}
-
-		// Cria o objeto query
+		
+		//Cria o objeto query
 		Query query = getSession().createQuery(hql);
-
-		// Define os valores dos campos
+		
+		//Define os valores dos campos
 		for (String campo : campos.keySet()) {
 			query.setParameter(campo, campos.get(campo));
 		}
-
+		
 		return query.list();
 	}
 

@@ -26,6 +26,12 @@ public class ClienteRestController {
 
 	@Autowired
 	ClienteDAO clienteDao;
+	// ---------------------------------------------------------
+	
+	@GetMapping("/clientes/usuario")
+	public ResponseEntity<Object> buscarPorUsuario(){
+			return ResponseEntity.ok(clienteService.buscarPorUsuario());
+	}
 
 	/* --------------------------------------------------------- */
 	
@@ -87,9 +93,15 @@ public class ClienteRestController {
 		}
 
 		clienteBuscado.setNome(cliente.getNome());
+		clienteBuscado.setIdade(cliente.getIdade());
+		clienteBuscado.setSexo(cliente.getSexo());
 		clienteBuscado.setTelefone(cliente.getTelefone());
+		clienteBuscado.setWhatsApp(cliente.getWhatsApp());
+		clienteBuscado.setResponsavel(cliente.getResponsavel());
+		clienteBuscado.setDia(cliente.getDia());
 		clienteBuscado.setHorario(cliente.getHorario());
 		clienteBuscado.setStatus(cliente.getStatus());
+		clienteBuscado.setLinkDeInstagram(cliente.getLinkDeInstagram());
 		
 		clienteDao.alterar(clienteBuscado);
 		return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);

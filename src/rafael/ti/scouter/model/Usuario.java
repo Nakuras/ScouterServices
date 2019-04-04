@@ -112,8 +112,8 @@ public class Usuario implements Authentication{
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> autorizacoes = new ArrayList<>(2);
 
-		if (this.getTipo() == TipoUsuario.DONO) {
-			autorizacoes.add(new SimpleGrantedAuthority("ROLE_DONO"));
+		if (this.getTipo() == TipoUsuario.PROPRIETARIO) {
+			autorizacoes.add(new SimpleGrantedAuthority("ROLE_PROPRIETARIO"));
 			autorizacoes.add(new SimpleGrantedAuthority("ROLE_ADM"));
 			autorizacoes.add(new SimpleGrantedAuthority("ROLE_RH"));
 

@@ -18,18 +18,18 @@ public class CriarAdministradorPadrao implements ApplicationListener<ContextRefr
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		
-		Usuario dono = new Usuario();
-		dono.setEmail("adriano@scouter.com.br");
-		dono.setSenha("adrianodono");
-		dono.setNome("Adriano");
-		dono.setNumero("975843526");
-		dono.setTipo(TipoUsuario.DONO);
-		dono.hashearSenha();
+		Usuario proprietario = new Usuario();
+		proprietario.setEmail("adriano@scouter.com.br");
+		proprietario.setSenha("proprietarioadriano");
+		proprietario.setNome("Adriano");
+		proprietario.setNumero("975843526");
+		proprietario.setTipo(TipoUsuario.PROPRIETARIO);
+		proprietario.hashearSenha();
 		 
 		
-		if(usuarioDao.buscarPorEmailESenha(dono.getEmail(), dono.getSenha()) == null) {
-			System.out.println(dono.getSenha());
-			usuarioDao.inserir(dono);
+		if(usuarioDao.buscarPorEmailESenha(proprietario.getEmail(), proprietario.getSenha()) == null) {
+			System.out.println(proprietario.getSenha());
+			usuarioDao.inserir(proprietario);
 		}
 	}
 

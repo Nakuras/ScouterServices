@@ -26,7 +26,7 @@ import rafael.ti.scouter.utils.JwtUtils;
 import rafael.ti.scouter.utils.MapUtils;
 
 @RestController
-@RequestMapping(value = "/rest/auth")
+@RequestMapping(value = "/rest/auth") // requisito padrão
 public class AuthRestController {
 
 	@Autowired
@@ -35,6 +35,7 @@ public class AuthRestController {
 	@Autowired
 	private SessionUtils sessionUtils;
 
+	// jwt é a ultima url pra acionar o método
 	@RequestMapping(value = "/jwt", method = { RequestMethod.POST })
 	public ResponseEntity<Object> gerarJwt(@Valid @RequestBody Usuario usuario, BindingResult bindingResult)
 			throws IllegalArgumentException, JWTCreationException, UnsupportedEncodingException {

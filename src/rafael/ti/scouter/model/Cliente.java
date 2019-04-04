@@ -18,24 +18,60 @@ public class Cliente {
 	@Column(name = "IdCliente")
 	private Long Id;
 	
-	@Column(length = 64, nullable = false, unique = false)
+	@Column(length = 120, nullable = false, unique = false)
+	@Size(min = 1, max = 120, message = "{Size}")
+	@NotNull(message = "{NotNull}")
+	private String usuario;
+	
+	@Column(length = 128, nullable = false, unique = false)
 	@Size(min = 1, max = 128, message = "{Size}")
 	@NotNull(message = "{NotNull}")
 	private String nome;
 	
 	@Column(length = 32, nullable = false, unique = false)
 	@Size(min = 1, max = 32, message = "{Size}")
+	@NotNull(message = "{NotNull}")
+	private String idade;
+	
+	@NotNull(message = "{NotNull}")
+	private Sexo sexo;
+	
+	@Column(length = 256, nullable = false, unique = false)
+	@Size(min = 4, max = 256, message = "{Size}")
+	@NotNull(message = "{NotNull}")
+	private String linkDeInstagram;
+	
+	@Column(length = 32, nullable = false, unique = false)
+	@Size(min = 1, max = 32, message = "{Size}")
+	@NotNull(message = "{NotNull}")
 	private String telefone;
+	
+	@Column(length = 32, nullable = false, unique = false)
+	private String whatsApp;
+	
+	@Column(length = 128, nullable = false, unique = false)
+	private String responsavel;
+	
+	@Column(length = 128, nullable = false, unique = false)
+	@Size(min = 1, max = 128, message = "{Size}")
+	@NotNull(message = "{NotNull}")
+	private String dia;
 	
 	@Column(length = 32, nullable = false, unique = false)
 	@Size(min = 1, max = 32, message = "{Size}")
 	@NotNull(message = "{NotNull}")
 	private String horario;
 	
-	@Column(length = 64, nullable = false, unique = false)
-	@Size(min = 1, max = 64, message = "{Size}")
 	@NotNull(message = "{NotNull}")
-	private String status;
+	private Status status;
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
 
 	public Long getId() {
 		return Id;
@@ -61,6 +97,14 @@ public class Cliente {
 		this.telefone = telefone;
 	}
 
+	public String getDia() {
+		return dia;
+	}
+
+	public void setDia(String dia) {
+		this.dia = dia;
+	}
+
 	public String getHorario() {
 		return horario;
 	}
@@ -69,14 +113,52 @@ public class Cliente {
 		this.horario = horario;
 	}
 
-	public String getStatus() {
+	public Status getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
-	
-	
+
+	public String getIdade() {
+		return idade;
+	}
+
+	public void setIdade(String idade) {
+		this.idade = idade;
+	}
+
+	public Sexo getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
+	}
+
+	public String getLinkDeInstagram() {
+		return linkDeInstagram;
+	}
+
+	public void setLinkDeInstagram(String linkDeInstagram) {
+		this.linkDeInstagram = linkDeInstagram;
+	}
+
+	public String getWhatsApp() {
+		return whatsApp;
+	}
+
+	public void setWhatsApp(String whatsApp) {
+		this.whatsApp = whatsApp;
+	}
+
+	public String getResponsavel() {
+		return responsavel;
+	}
+
+	public void setResponsavel(String responsavel) {
+		this.responsavel = responsavel;
+	}
 	
 }

@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 				//permissão de usuario
 				.antMatchers(HttpMethod.POST, "/rest/auth/**").permitAll()
-				.antMatchers(HttpMethod.GET, "/criar/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/usuario/**").permitAll()
 				.antMatchers(HttpMethod.PUT, "/usuario/**").permitAll()
 				.antMatchers(HttpMethod.DELETE, "/usuario/**").permitAll()
 				//permissão de cliente

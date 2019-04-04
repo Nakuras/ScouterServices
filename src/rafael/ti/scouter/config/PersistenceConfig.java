@@ -19,9 +19,11 @@ public class PersistenceConfig {
 	public DataSource getDataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/scouterservices?serverTimezone=UTC");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/scterser_scouterservices?serverTimezone=UTC");
 		dataSource.setUsername("root");
+		//dataSource.setUsername("scterser_root");
 		dataSource.setPassword("root132");
+		//dataSource.setPassword("rootScouterServices");
 		
 		return dataSource;
 	}
@@ -29,7 +31,7 @@ public class PersistenceConfig {
 	public Properties getHibernateProperties() {
 		Properties properties = new Properties();
 		properties.setProperty("hibernate.show_sql", "true");
-		properties.setProperty("hibernate.hbm2ddl.auto", "update");
+		properties.setProperty("hibernate.hbm2ddl.auto", "create");
 		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 		
 		return properties;
