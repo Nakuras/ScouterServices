@@ -46,7 +46,7 @@ public class Usuario implements Authentication{
 	private String numero;
 	
 	@Column(length = 64, nullable = false, unique = false)
-	@Size(min = 5, max = 32, message = "{Size}")
+	@Size(min = 4, max = 32, message = "{Size}")
 	@NotNull(message = "{NotNull}")
 	private String senha;
 
