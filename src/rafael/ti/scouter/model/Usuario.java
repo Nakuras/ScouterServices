@@ -23,6 +23,8 @@ import org.springframework.util.DigestUtils;
 @Table(name = "usuario")
 public class Usuario implements Authentication{
 	
+	private static final long serialVersionUID = -8732989810925016663L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "usuarioId")

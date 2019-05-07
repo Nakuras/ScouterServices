@@ -25,7 +25,6 @@ public class CriarAdministradorPadrao implements ApplicationListener<ContextRefr
 		proprietario.setNumero("975843526");
 		proprietario.setTipo(TipoUsuario.PROPRIETARIO);
 		proprietario.hashearSenha();
-		 
 		
 		if(usuarioDao.buscarPorEmailESenha(proprietario.getEmail(), proprietario.getSenha()) == null) {
 			System.out.println(proprietario.getSenha());

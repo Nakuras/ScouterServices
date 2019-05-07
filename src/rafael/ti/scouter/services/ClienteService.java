@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
-import rafael.ti.scouter.core.SessionUtils;
 import rafael.ti.scouter.dao.ClienteDAO;
 import rafael.ti.scouter.exceptions.EntidadeNaoEncontradaException;
 import rafael.ti.scouter.exceptions.ValidacaoException;
@@ -19,11 +18,17 @@ public class ClienteService {
 	@Autowired
 	private ClienteDAO clienteDao;
 	
-	@Autowired
-	private SessionUtils sessionUtils;
-	
-	public List<Cliente> buscarPorUsuario(){
-		return clienteDao.buscarPorUsuario(sessionUtils.getUsuarioLogado().getEmail());
+	public List<Cliente> buscarPorUsuario(Cliente cliente, BindingResult bindingResult) throws ValidacaoException, EntidadeNaoEncontradaException {
+		if(bindingResult.hasFieldErrors("usuario")) {
+			throw new ValidacaoException();
+		}
+		
+		List<Cliente> clienteBuscado = clienteDao.buscarPorUsuario(cliente.getUsuario());
+		if(clienteBuscado == null) {
+			throw new EntidadeNaoEncontradaException();
+		}
+		
+		return clienteBuscado;
 	}
 
 	public Cliente cadastrar(Cliente cliente, BindingResult bindingResult) throws ValidacaoException {

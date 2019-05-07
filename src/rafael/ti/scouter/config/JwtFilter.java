@@ -1,6 +1,7 @@
 package rafael.ti.scouter.config;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -18,9 +19,9 @@ import rafael.ti.scouter.model.Usuario;
 import rafael.ti.scouter.utils.JwtUtils;
 
 @Component
-public class JwtFilter extends GenericFilterBean implements Filter {
-
-	private static final long serialVersionUID = 1L;
+public class JwtFilter extends GenericFilterBean implements Filter, Serializable {
+	
+	private static final long serialVersionUID = 4116097870624832661L;
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)

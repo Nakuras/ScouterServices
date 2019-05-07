@@ -43,7 +43,7 @@ public abstract class AbstractJPA<T> implements DAO<T> {
 	public List<T> buscarPorCampos(Map<String, Object> campos) {
 
 		if(campos.size() == 0) {
-			throw new IllegalArgumentException("Você deve informar mais de um campo na busca de camppos");
+			throw new IllegalArgumentException("Você deve informar mais de um campo na busca de campos");
 		}
 		
 		String hql = "FROM " + getEntityName() + " e";
